@@ -3,12 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { CardListComponent } from './cards/card-list.component';
+
+
+import { MdCardModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CardListComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MdCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

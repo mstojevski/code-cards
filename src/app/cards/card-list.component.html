@@ -1,0 +1,13 @@
+<ul *ngIf="cards">
+  <li *ngFor="let card of cards">
+    <md-card style="width:40%; margin-left:30%; margin-bottom:30px">
+      <h3>{{card.title}}</h3>
+      <span>id: {{card.id}}</span>
+      <p>{{card.description}}</p>
+      <pre>
+        {{card.code}}
+      </pre>
+    </md-card>
+  </li>
+</ul>
+
