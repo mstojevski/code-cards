@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { CardListComponent } from './cards/card-list.component';
 
 
-import { MdCardModule } from '@angular/material';
+import { MdCardModule, MdToolbarModule, MdButtonModule, MdProgressSpinnerModule,MdMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardService } from './cards/card.service';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MdCardModule
+    MdCardModule,
+    MdToolbarModule,
+    MdButtonModule,
+    MdProgressSpinnerModule,
+    MdMenuModule
   ],
-  providers: [],
+  providers: [CardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

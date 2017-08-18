@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
+import { ICard } from './card';
+import { CardService } from './card.service';
+
 @Component({
   selector: 'app-cardlist',
   templateUrl: 'card-list.component.html',
@@ -8,60 +13,11 @@ import { Component, OnInit } from '@angular/core';
 
 export class CardListComponent implements OnInit {
 
-  cards = [
-    {
-      id: 1,
-      title: 'Promises are cool 1 ',
-      category: [],
-      description: 'This is promises code for your brain',
-      code: `Array.prototype.map.call(str, function(x) {
-        return x;
-      }).reverse().join(''); `
-    },
+  cards: ICard[] = [];
 
-    {
-      id: 2,
-      title: 'Promises are cool 2',
-      category: [],
-      description: 'This is promises code for your brain',
-      code: `var output = orders2.reduce((customers, line) => {
-        customers[line[0]] = customers[line[0]] || [];
-        customers[line[0]].push({
-            name: line[1],
-            price: line[2],
-            quantity: line[3]
-        })`
-    },
+  constructor(private _cardService: CardService) { }
 
-    {
-      id: 3,
-      title: 'Promises are cool 3',
-      category: [],
-      description: 'This is promises code for your brain',
-      code: `var orders2 = [
-        ["Mark Johansson", "waffle iron", 80, 2],
-        ["Mark Johansson", "blender", 200, 1],
-        ["Mark Johansson", "knife", 10, 4],
-        ["Nikita Smith", "waffle iron", 80, 1],
-        ["Nikita Smith", "knife", 10, 2],
-        ["Nikita Smith", "pot", 20, 3]
-    ];`
-    },
-
-    {
-      id: 4,
-      title: 'Promises are cool 4',
-      category: [],
-      description: 'This is promises code for your brain',
-      code: `myArray = [1,2,3,4];
-
-      myArray.map(function (element) {
-        return element + 1;
-      });`
-    }
-  ];
-
-  constructor() { }
-
-  ngOnInit() { }
+  ngOnInit(): void {
+    this.cards = this._cardService.getCards();
+   }
 }
