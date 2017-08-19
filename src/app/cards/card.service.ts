@@ -1,63 +1,25 @@
 import { Injectable } from '@angular/core';
 import { ICard } from './card';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 
 @Injectable()
 export class CardService {
+  constructor(private _http: HttpClient) {}
 
-  getCards(): ICard[] {
-    return  [
-      {
-        id: 1,
-        title: 'Promises are cool 1 ',
-        category: 'js',
-        description: 'This is promises code for your brain',
-        code: `Array.prototype.map.call(str, function(x) {
-          return x;
-        }).reverse().join(''); `
-      },
+  private _cardsUrl = './assets/api/card/cards.json';
 
-      {
-        id: 2,
-        title: 'Promises are cool 2',
-        category: 'js',
-        description: 'This is promises code for your brain',
-        code: `var output = orders2.reduce((customers, line) => {
-          customers[line[0]] = customers[line[0]] || [];
-          customers[line[0]].push({
-              name: line[1],
-              price: line[2],
-              quantity: line[3]
-          })`
-      },
-
-      {
-        id: 3,
-        title: 'Promises are cool 3',
-        category: 'js',
-        description: 'This is promises code for your brain',
-        code: `var orders2 = [
-          ["Mark Johansson", "waffle iron", 80, 2],
-          ["Mark Johansson", "blender", 200, 1],
-          ["Mark Johansson", "knife", 10, 4],
-          ["Nikita Smith", "waffle iron", 80, 1],
-          ["Nikita Smith", "knife", 10, 2],
-          ["Nikita Smith", "pot", 20, 3]
-      ];`
-      },
-
-      {
-        id: 4,
-        title: 'Promises are cool 4',
-        category: 'js',
-        description: 'This is promises code for your brain',
-        code: `myArray = [1,2,3,4];
-
-        myArray.map(function (element) {
-          return element + 1;
-        });`
-      }
-    ];
+  getCards(): Observable<ICard[]> {
+  return this._http.get<ICard[]>(this._cardsUrl)
+    .catch(this.handleError);
   }
 
-  constructor() { }
+  private handleError(err: HttpErrorResponse) {
+    console.log(err.message);
+    return Observable.throw(err.message);
+  }
 }

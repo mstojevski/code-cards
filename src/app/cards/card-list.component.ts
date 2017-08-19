@@ -6,7 +6,7 @@ import { ICard } from './card';
 import { CardService } from './card.service';
 
 @Component({
-  selector: 'app-cardlist',
+  selector: 'cc-cardlist',
   templateUrl: 'card-list.component.html',
   styleUrls: ['./card-list.component.css']
 })
@@ -14,10 +14,13 @@ import { CardService } from './card.service';
 export class CardListComponent implements OnInit {
 
   cards: ICard[] = [];
+  errorMessage: string;
 
   constructor(private _cardService: CardService) { }
 
   ngOnInit(): void {
-    this.cards = this._cardService.getCards();
+    this._cardService.getCards()
+      .subscribe(cards => this.cards = cards,
+      error => this.errorMessage = <any> error);
    }
 }
