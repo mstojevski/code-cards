@@ -1,20 +1,25 @@
-<ul *ngIf="cards">
-  <li *ngFor="let card of cards">
-    <md-card class="card">
-      <md-card-title>
-        <h3>{{card.title}}</h3>
-      </md-card-title>
-      <md-card-content>
-        <span>id: {{card.id}}</span>
-        <p>{{card.description}}</p>
-        <pre>
-          {{card.code}}
-        </pre>
-      </md-card-content>
-      <md-card-actions>
-          <button md-button>Show more</button>
-      </md-card-actions>
-    </md-card>
-  </li>
-</ul>
+<section class="cards-full">
+  <div class="container">
+    <h2 class="u-center site-title">Code cards are cool!</h2>
+      <ul *ngIf="cards">
+          <li *ngFor="let card of cards">
+            <md-card class="card">
+              <md-card-title class="card-title">
+                {{card.title}}
+              </md-card-title>
+              <md-card-content>
+                <span>id: {{card.id}}</span>
+                <p>{{card.description}}</p>
+                <span>
+                  {{card.code}}
+                </span>
+              </md-card-content>
+              <md-card-actions>
+                  <button class="btn-primary" md-button>Show more</button>
+              </md-card-actions>
+            </md-card>
+          </li>
+        </ul>
+      </div>
+  </section>
 
