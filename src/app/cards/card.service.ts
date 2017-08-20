@@ -14,7 +14,8 @@ export class CardService {
   private _cardsUrl = './assets/api/card/cards.json';
 
   getCards(): Observable<ICard[]> {
-  return this._http.get<ICard[]>(this._cardsUrl)
+  return this._http
+    .get<ICard[]>(this._cardsUrl)
     .catch(this.handleError);
   }
 

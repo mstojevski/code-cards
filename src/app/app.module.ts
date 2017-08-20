@@ -12,12 +12,14 @@ import { MdCardModule, MdToolbarModule, MdButtonModule, MdProgressSpinnerModule,
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './cards/card.service';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardListComponent,
     WelcomeComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

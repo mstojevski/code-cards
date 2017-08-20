@@ -1,0 +1,19 @@
+<ul *ngIf="cardsArr">
+          <li *ngFor="let card of cardsArr">
+            <md-card class="card">
+              <md-card-title class="card-title">
+                {{card.title}}
+              </md-card-title>
+              <md-card-content>
+                <span>id: {{card.id}}</span>
+                <p>{{card.description}}</p>
+                <span>
+                  {{card.code}}
+                </span>
+              </md-card-content>
+              <md-card-actions>
+                  <button class="btn-primary" md-button>Show more</button>
+              </md-card-actions>
+            </md-card>
+          </li>
+        </ul>
