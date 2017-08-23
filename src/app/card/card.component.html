@@ -1,5 +1,5 @@
 <ul *ngIf="cardsArr">
-          <li *ngFor="let card of cardsArr">
+          <li *ngFor="let card of cardsArr | async">
             <md-card class="card">
               <md-card-title class="card-title">
                 {{card.title}}
