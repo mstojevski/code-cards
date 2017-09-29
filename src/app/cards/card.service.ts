@@ -12,7 +12,8 @@ import 'rxjs/add/observable/throw';
 export class CardService {
   constructor(private _http: HttpClient) {}
 
-  private _cardsUrl = './assets/api/card/cards.json';
+  // private _cardsUrl = './assets/api/card/cards.json';
+  private _cardsUrl = 'app/cards';
 
   getCards(): Observable<ICard[]> {
   return this._http

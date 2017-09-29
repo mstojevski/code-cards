@@ -1,12 +1,12 @@
 <div *ngIf="cardsArr" class="col-xs-8 col-xs-offset-2">
-  <div *ngFor="let card of cardsArr | async" class="card panel panel-default">
+  <div *ngFor="let card of cardsArr" class="card panel panel-default">
     <div class="card-title panel-heading">
       {{card.title}}
     </div>
     <div class="card-content">
       <span>id: {{card.id}}</span>
       <p>{{card.description}}</p>
-      <pre class="code">{{card.code}}</pre>
+      <pre class="card-code">{{card.code}}</pre>
       <p><button class="btn btn-primary">Show more</button></p>
     </div>
   </div>

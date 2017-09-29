@@ -13,12 +13,15 @@ import { Observable } from 'rxjs/Observable';
 
 export class CardListComponent implements OnInit {
 
-  cards: Observable<ICard[]>;
+  cards = [];
   errorMessage: string;
 
   constructor(private _cardService: CardService) { }
 
   ngOnInit(): void {
-     this.cards = this._cardService.getCards();
+     this._cardService
+      .getCards()
+      .subscribe((data) => this.cards = data);
+      console.log(this.cards);
    }
 }
