@@ -22,6 +22,6 @@ export class CardListComponent implements OnInit {
   ngOnInit() {
      return this._cardService
         .getCards()
-        .subscribe((cards) => this.cards = cards);
+        .subscribe((cards) => this.cards = cards.data);
    }
 }
