@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 import { ICard } from './card';
 import { CardService } from './card.service';
 import { Observable } from 'rxjs/Observable';
@@ -18,9 +19,9 @@ export class CardListComponent implements OnInit {
 
   constructor(private _cardService: CardService) { }
 
-  ngOnInit(): void {
-     this._cardService
-      .getCards()
-      .subscribe((data) => this.cards = data);
+  ngOnInit() {
+     return this._cardService
+        .getCards()
+        .subscribe((cards) => this.cards = cards);
    }
 }

@@ -1,5 +1,5 @@
-import { ICard } from './cards/card';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { ICard } from './cards/card';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
