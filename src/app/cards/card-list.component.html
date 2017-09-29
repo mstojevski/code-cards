@@ -2,7 +2,10 @@
   <div class="container">
     <h2 class="u-center site-title">Code cards are cool!</h2>
       <div class="col-xs-12">
-        <app-card [cardsArr]="cards"></app-card>
+        <app-card
+        *ngFor="let card of cards"
+        [inputCard]="card"
+        ></app-card>
       </div>
   </div>
 </section>

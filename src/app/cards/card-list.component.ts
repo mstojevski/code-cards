@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class CardListComponent implements OnInit {
 
-  cards = [];
+  cards: ICard[] = [];
   errorMessage: string;
 
   constructor(private _cardService: CardService) { }
@@ -22,6 +22,5 @@ export class CardListComponent implements OnInit {
      this._cardService
       .getCards()
       .subscribe((data) => this.cards = data);
-      console.log(this.cards);
    }
 }

@@ -8,7 +8,7 @@ import { ICard } from '../cards/card';
 })
 export class CardComponent implements OnInit {
 
-  @Input() cardsArr: ICard[] = [];
+  @Input() inputCard: ICard;
   constructor() { }
 
   ngOnInit() {
