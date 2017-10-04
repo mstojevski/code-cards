@@ -9,9 +9,10 @@ import { CardListComponent } from './cards/card-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './cards/card.service';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { CardComponent } from './card/card.component';
+// import { CardComponent } from './card/card.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { SingleCardComponent } from './single-card/single-card.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppComponent,
     CardListComponent,
     WelcomeComponent,
-    CardComponent,
+    SingleCardComponent,
+    // CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent},
       {path: 'cards', component: CardListComponent},
+      {path: 'cards/:id', component: SingleCardComponent},
       {path: '', redirectTo: 'welcome', pathMatch: 'full'}
     ])
   ],

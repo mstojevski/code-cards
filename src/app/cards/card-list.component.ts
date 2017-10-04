@@ -19,6 +19,10 @@ export class CardListComponent implements OnInit {
 
   constructor(private _cardService: CardService) { }
 
+  deleteCard(id: number) {
+    this._cardService.deleteCard(id);
+    this.cards = this.cards.filter((card: ICard) => card.id !== id);
+  }
   ngOnInit() {
      return this._cardService
         .getCards()
