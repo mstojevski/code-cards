@@ -1,19 +1,18 @@
-import { ICard } from '../cards/card';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CardService } from '../cards/card.service';
+import { Card } from '../../models/card.interface';
+import { CardService } from '../../card.service';
 
 @Component({
-  selector: 'app-single-card',
   templateUrl: './single-card.component.html',
   styleUrls: ['./single-card.component.css']
 })
 export class SingleCardComponent implements OnInit {
-  card: ICard;
+  card: Card;
 
   getSingleCard(id: number) {
     this.cardServ.getCard(id)
-      .subscribe((data: ICard) => this.card = data);
+      .subscribe((data: Card) => this.card = data);
   }
   goBack() {
     this.router.navigate(['/cards']);

@@ -1,18 +1,16 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { ICard } from './cards/card';
+import { Card } from './code-cards/models/card.interface';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const cards: ICard[] = [
+    const cards: Card[] = [
 
       {
         id: 1,
         title: 'Finding Minimun in array',
         category: 'js',
         description: 'Using spread',
-        code: `function findSmallestNum(arr) {
-          return Math.min(...arr);
-        }`
+        code: 'Kod 1'
       },
 
       {
@@ -20,9 +18,7 @@ export class InMemoryDataService implements InMemoryDbService {
         title: 'Sort numbers',
         category: 'js',
         description: 'Sort using sort method',
-        code: `function sortNumsAscending(arr) {
-          return (arr || []).sort((a,b) => a - b)
-        }`
+        code: 'Kod 2'
       },
 
       {
@@ -30,9 +26,7 @@ export class InMemoryDataService implements InMemoryDbService {
         title: 'Reverse string',
         category: 'js',
         description: 'Reverse string using srj',
-        code: `function reverse(str) {
-          return str.split('').reverse().join('');
-        }`
+        code: 'Kod 3'
       },
 
 
@@ -41,9 +35,7 @@ export class InMemoryDataService implements InMemoryDbService {
         title: 'CamelCase',
         category: 'js',
         description: 'Capitalize The First Letter Of Each Word',
-        code: `function makeTitle(str) {
-          return str.split(' ').map( w => w[0].toUpperCase() + w.slice(1)).join(' ');
-        }`
+        code: 'Kod 4'
       },
     ];
 

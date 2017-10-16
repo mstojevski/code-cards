@@ -1,29 +1,28 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { CardModule } from './code-cards/card.module';
 
+// Components
+import { CardListComponent } from './code-cards/containers/cards/card-list.component';
+import { SingleCardComponent } from './code-cards/components/single-card/single-card.component';
+import { WelcomeComponent } from './code-cards/components/welcome/welcome.component';
 import { AppComponent } from './app.component';
-import { CardListComponent } from './cards/card-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CardService } from './cards/card.service';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { SingleCardComponent } from './single-card/single-card.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardListComponent,
     WelcomeComponent,
-    SingleCardComponent,
+    SingleCardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    CardModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     RouterModule.forRoot([
@@ -33,7 +32,7 @@ import { SingleCardComponent } from './single-card/single-card.component';
       {path: '', redirectTo: 'welcome', pathMatch: 'full'}
     ])
   ],
-  providers: [CardService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
