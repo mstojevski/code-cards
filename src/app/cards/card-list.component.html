@@ -1,29 +1,21 @@
 <section class="cards-full">
   <div class="container">
     <h2 class="u-center site-title">Code cards are cool!</h2>
-      <div class="col-xs-12" *ngIf="cards">
-        <!-- <app-card
-        *ngFor="let card of cards"
-        [inputCard]="card"
-        ></app-card> -->
-
-        <div class="col-xs-8 col-xs-offset-2">
-          <div  class="card panel panel-default" *ngFor="let card of cards">
-            <div class="card-title panel-heading">
-              {{card.title}}
-            </div>
-            <div class="card-content">
-              <p>{{card.description}}</p>
-              <pre class="card-code">{{card.code}}</pre>
-              <button [routerLink]="['/cards', card.id]" class="btn btn-primary">Show more</button>
-              <button class="btn btn-danger" (click)="deleteCard(card.id)">Delete</button>
-            </div>
+    <div class="col-xs-12" *ngIf="cards$ | async as cards">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="card panel panel-default" *ngFor="let card of cards">
+          <div class="card-title panel-heading">
+            {{card.title}}
+          </div>
+          <div class="card-content">
+            <p>{{card.description}}</p>
+            <pre class="card-code">{{card.code}}</pre>
+            <button [routerLink]="['/cards', card.id]" class="btn btn-primary">Show more</button>
+            <button class="btn btn-danger" (click)="deleteCard(card.id)">Delete</button>
           </div>
         </div>
-
       </div>
-
+    </div>
   </div>
 </section>
-
 

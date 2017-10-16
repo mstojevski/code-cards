@@ -1,2 +1,15 @@
-{{ card.title }}
-{{ card.id }}
+<section class="card-single">
+  <div class="col-xs-4 col-xs-offset-4">
+    <div  class="card panel panel-default">
+      <div class="card-title panel-heading">
+        {{card?.title}}
+      </div>
+      <div class="card-content">
+        <p>{{card?.description}}</p>
+        <pre class="card-code">{{card?.code}}</pre>
+        <button (click)="goBack()"
+          class="btn btn-primary">Go back</button>
+      </div>
+    </div>
+  </div>
+</section>
