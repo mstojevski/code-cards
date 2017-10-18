@@ -45,9 +45,12 @@ export class CardService {
   deleteCard(id: string) {
     const url = `${this._cardsUrl}/${id}`;
     return this.http.delete(url);
+<<<<<<< HEAD:src/app/code-cards/card.service.ts
   }
   addCards(card: Card) {
     return this.http.post(this._cardsUrl, card);
+=======
+>>>>>>> f5260c275af86115014e4a93dc5dff4d680cda27:src/app/code-cards/card.service.ts
   }
 
   private handleError(err: HttpErrorResponse) {
