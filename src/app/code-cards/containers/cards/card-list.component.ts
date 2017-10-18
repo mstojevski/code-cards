@@ -19,11 +19,13 @@ export class CardListComponent implements OnInit {
 
   constructor(private cardService: CardService) {}
 
-  deleteCard(id: number) {
-     this.cardService
-       .deleteCard(id);
-       this.cards = this.cards.filter((card: Card) => card.id !== id);
-   }
+  deleteCard(id: string) {
+    this.cardService
+      .deleteCard(id)
+      .subscribe(
+        () => (this.cards = this.cards.filter((card: Card) => card.id !==  id))
+      );
+  }
   // onStoreCards() {
   //   this.cardService
   //     .storeCards(this.cards)
@@ -32,6 +34,6 @@ export class CardListComponent implements OnInit {
   ngOnInit() {
     this.cardService
       .getCards()
-      .subscribe((cards: Card[]) => this.cards = cards);
+      .subscribe((cards: Card[]) => (this.cards = cards));
   }
 }

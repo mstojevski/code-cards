@@ -12,12 +12,14 @@ import { CardListComponent } from './code-cards/containers/cards/card-list.compo
 import { SingleCardComponent } from './code-cards/components/single-card/single-card.component';
 import { WelcomeComponent } from './code-cards/components/welcome/welcome.component';
 import { AppComponent } from './app.component';
+import { AddCardComponent } from './code-cards/components/add-card/add-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    SingleCardComponent
+    SingleCardComponent,
+    AddCardComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent},
       {path: 'cards', component: CardListComponent},
+      {path: 'cards/add', component: AddCardComponent},
       {path: 'cards/:id', component: SingleCardComponent},
       {path: '', redirectTo: 'welcome', pathMatch: 'full'}
     ])

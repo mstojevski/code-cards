@@ -42,9 +42,12 @@ export class CardService {
       .map((res: any) => res.data as Card);
   }
 
-  deleteCard(id: number) {
+  deleteCard(id: string) {
     const url = `${this._cardsUrl}/${id}`;
     return this.http.delete(url);
+  }
+  addCards(card: Card) {
+    return this.http.post(this._cardsUrl, card);
   }
 
   private handleError(err: HttpErrorResponse) {
