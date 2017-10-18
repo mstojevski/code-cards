@@ -2,9 +2,9 @@ import { CardService } from '../../card.service';
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../../models/card.interface';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { UUID } from 'angular2-uuid';
-
 
 @Component({
   templateUrl: './add-card.component.html',
@@ -18,19 +18,23 @@ export class AddCardComponent implements OnInit {
   }
   onAdd(title, code) {
     const newCard: Card = {
-      id: UUID.UUID(),
+      // id: UUID.UUID(),
+      id: this.generateId(),
       title: title,
       code: code,
       category: 'js',
       description: null
     };
 
+
     return this.cardService.addCards(newCard).subscribe(() => {
       this.cards.push(newCard);
+      this.route.navigate(['/cards']);
     });
+
   }
 
-  constructor(private http: HttpClient, private cardService: CardService) {}
+  constructor(private http: HttpClient, private cardService: CardService, private route: Router) {}
 
   ngOnInit() {
     this.cardService

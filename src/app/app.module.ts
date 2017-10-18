@@ -12,21 +12,14 @@ import { CardListComponent } from './code-cards/containers/cards/card-list.compo
 import { SingleCardComponent } from './code-cards/components/single-card/single-card.component';
 import { WelcomeComponent } from './code-cards/components/welcome/welcome.component';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { AddCardComponent } from './code-cards/components/add-card/add-card.component';
-=======
->>>>>>> f5260c275af86115014e4a93dc5dff4d680cda27
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-<<<<<<< HEAD
     SingleCardComponent,
     AddCardComponent
-=======
-    SingleCardComponent
->>>>>>> f5260c275af86115014e4a93dc5dff4d680cda27
   ],
   imports: [
     BrowserModule,

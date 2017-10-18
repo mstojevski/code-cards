@@ -1,3 +1,7 @@
 .add-card {
   padding:80px 0;
 }
+.card-category {
+  color:#f7df1e;
+  font-weight: bold;
+}
