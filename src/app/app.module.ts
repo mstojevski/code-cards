@@ -1,11 +1,15 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { FormsModule } from '@angular/forms';
+
 import { CardModule } from './code-cards/card.module';
+import { CodemirrorModule } from 'ng2-codemirror';
+// Environment
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 // Components
 import { CardListComponent } from './code-cards/containers/cards/card-list.component';
@@ -19,23 +23,24 @@ import { AddCardComponent } from './code-cards/components/add-card/add-card.comp
     AppComponent,
     WelcomeComponent,
     SingleCardComponent,
-    AddCardComponent
+    AddCardComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     CardModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    CodemirrorModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     RouterModule.forRoot([
-      {path: 'welcome', component: WelcomeComponent},
-      {path: 'cards', component: CardListComponent},
-      {path: 'cards/add', component: AddCardComponent},
-      {path: 'cards/:id', component: SingleCardComponent},
-      {path: '', redirectTo: 'welcome', pathMatch: 'full'}
-    ])
+      { path: 'welcome', component: WelcomeComponent },
+      { path: 'cards', component: CardListComponent },
+      { path: 'cards/add', component: AddCardComponent },
+      { path: 'cards/card/:id', component: SingleCardComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+    ]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

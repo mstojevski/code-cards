@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Card } from '../../models/card.interface';
 import { CardService } from '../../card.service';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
@@ -12,30 +16,36 @@ import 'rxjs/add/operator/catch';
   templateUrl: 'card-list.component.html',
   styleUrls: ['./card-list.component.css'],
 })
-export class CardListComponent implements OnInit {
+export class CardListComponent implements OnInit, OnDestroy {
   cards: Card[];
   errorMessage: string;
-  card: Card;
-
+  cardToEdit: Card;
+  editStatus = false;
+  cardListSub: Subscription;
   constructor(private cardService: CardService) {}
 
-
-  deleteCard(id: number) {
-    this.cardService
-      .deleteCard(id)
-      .subscribe(
-        () => (this.cards = this.cards.filter((card: Card) => card.id !==  id))
-      );
+  deleteCard(card: Card) {
+    this.cardService.deleteCard(card);
   }
 
-  // onStoreCards() {
-  //   this.cardService
-  //     .storeCards(this.cards)
-  //     .subscribe((data) => console.log(data));
-  // }
+  editCard(card: Card) {
+    this.editStatus = true;
+    this.cardToEdit = card;
+  }
+  clearState() {
+    this.editStatus = false;
+  }
+  updateCard(card: Card) {
+    this.cardService.updateCard(card);
+    this.clearState();
+  }
   ngOnInit() {
-    this.cardService
+    this.cardListSub = this.cardService
       .getCards()
-      .subscribe((cards: Card[]) => (this.cards = cards));
+      .subscribe((data: Card[]) => (this.cards = data));
+  }
+
+  ngOnDestroy() {
+    this.cardListSub.unsubscribe();
   }
 }

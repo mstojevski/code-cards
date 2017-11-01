@@ -1,3 +1,4 @@
+import { Card } from '../../models/card.interface';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardsCountComponent implements OnInit {
 
-  @Input() cards;
+  @Input() cards: Card[];
 
   constructor() { }
 

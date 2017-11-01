@@ -1,10 +1,9 @@
-<!-- <button class="btn btn-success" (click)="onStoreCards()">Save Cards</button> -->
 <section class="cards-full">
   <div class="container">
     <h2 class="u-center site-title">Code cards are cool!</h2>
-    <div class="col-xs-12" *ngIf="cards?.length">
-      <div class="col-xs-8 col-xs-offset-2">
-        <app-cards-count [cards]="cards"></app-cards-count>
+    <div class="col-xs-8 col-xs-offset-2">
+      <app-cards-count [cards]="cards"></app-cards-count>
+      <div *ngIf="cards?.length > 0; else noCards">
         <div class="card panel panel-default" *ngFor="let card of cards">
           <div class="card-title panel-heading">
             {{ card.title }}
@@ -13,11 +12,32 @@
           <div class="card-content">
             <p>{{ card.description }}</p>
             <pre class="card-code">{{ card.code }}</pre>
-            <button [routerLink]="['/cards', card.id]" class="btn btn-primary">Show more</button>
-            <button class="btn btn-danger" (click)="deleteCard(card.id)">Delete</button>
+            <button [routerLink]="['/cards/card', card.id]" class="btn btn-primary">Show more</button>
+            <button class="btn btn-danger" (click)="deleteCard(card)">Delete</button>
+            <button class="btn btn-success" (click)="editCard(card)">Edit</button>
+          </div>
+          <div *ngIf="editStatus && cardToEdit.id === card.id">
+            <form (ngSubmit)="updateCard(card)">
+              <div class="form-group">
+                <label for="">Title</label>
+                <input type="text" class="form-control" [(ngModel)]="card.title" name="title">
+              </div>
+              <div class="form-group">
+                <label for="">Code</label>
+                <input type="text" class="form-control" [(ngModel)]="card.code" name="code">
+              </div>
+              <button type="submit" class="btn btn-info">Update</button>
+              <button (click)="clearState()" class="btn btn-danger">Cancel</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
+
+
+    <ng-template #noCards>
+      <h1>No Cards added.</h1>
+    </ng-template>
+
   </div>
 </section>
