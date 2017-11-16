@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   templateUrl: './single-card.component.html',
-  styleUrls: ['./single-card.component.css']
+  styleUrls: ['./single-card.component.scss']
 })
 export class SingleCardComponent implements OnInit, OnDestroy {
   card: Card;

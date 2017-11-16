@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './add-card.component.html',
-  styleUrls: ['./add-card.component.css'],
+  styleUrls: ['./add-card.component.scss'],
 })
 export class AddCardComponent implements OnInit {
   cards: Card[];

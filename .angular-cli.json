@@ -19,7 +19,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/codemirror/lib/codemirror.css",
         "../node_modules/codemirror/theme/material.css",
-        "styles.css"
+        "styles.scss"
       ],
       "scripts": [
         "../node_modules/codemirror/lib/codemirror.js",
