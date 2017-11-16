@@ -23,7 +23,6 @@ import { CardRoutingModule } from './code-cards/card-routing.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AppRoutingModule,
-    CardRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
