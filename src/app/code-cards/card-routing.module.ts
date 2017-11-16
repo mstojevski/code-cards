@@ -10,10 +10,10 @@ import { CardListComponent } from './containers/cards/card-list.component';
 const routes: Routes = [
   {
     path: '',
-    component: CardListComponent,
     children: [
-      { path: 'add', component: AddCardComponent },
+      { path: '', component: CardListComponent},
       { path: 'card/:id', component: SingleCardComponent },
+      { path: 'add', component: AddCardComponent }
     ],
   },
 ];
