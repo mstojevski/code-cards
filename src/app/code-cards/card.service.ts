@@ -1,13 +1,15 @@
-import { Card } from './models/card.interface';
+// Module
 import { Injectable } from '@angular/core';
-// import { Http, Response, Headers } from '@angular/http';
-
+// Model
+import { Card } from './models/card.interface';
+// Angular Firestore
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from 'angularfire2/firestore';
 
+// Rxjs
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/catch';

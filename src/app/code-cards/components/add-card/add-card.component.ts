@@ -4,8 +4,7 @@ import { Card } from '../../models/card.interface';
 import 'codemirror/mode/javascript/javascript';
 
 import { Router } from '@angular/router';
-
-import { UUID } from 'angular2-uuid';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './add-card.component.html',
@@ -21,18 +20,19 @@ export class AddCardComponent implements OnInit {
     mode: 'javascript',
   };
 
-  public generateId() {
-    return Math.round(Math.random() * 10000);
-  }
-  onAdd(title, code, desc) {
+  cardForm: FormGroup;
+
+  addCard() {
     const newCard: Card = {
-      title: title,
-      code: code,
+      title: this.cardForm.get('title').value,
+      code: this.cardForm.get('code').value,
       category: 'js',
-      description: desc,
+      description: this.cardForm.get('description').value
     };
-    this.cardService.addCard(newCard);
-    this.route.navigate(['/cards']);
+    if (this.cardForm.valid) {
+      this.cardService.addCard(newCard);
+      this.route.navigate(['/cards']);
+    }
   }
 
   constructor(private cardService: CardService, private route: Router) {
@@ -41,6 +41,10 @@ export class AddCardComponent implements OnInit {
 
   ngOnInit() {
     this.cardService.getCards();
-    // .subscribe((cards: Card[]) => (this.cards = cards));
+    this.cardForm = new FormGroup({
+      'title': new FormControl(null, [Validators.required, Validators.minLength(4)]),
+      'description': new FormControl(null, [Validators.required, Validators.minLength(4)]),
+      'code': new FormControl(null, [Validators.required])
+    });
   }
 }

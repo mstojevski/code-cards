@@ -1,3 +1,6 @@
 textarea {
   resize:none;
 }
+.code-warning {
+  margin-top:20px;
+}

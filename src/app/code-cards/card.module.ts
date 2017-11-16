@@ -1,21 +1,25 @@
-// modules
+// Module
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { CodemirrorModule } from 'ng2-codemirror';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-// Components
+// Component
 import { CardListComponent } from './containers/cards/card-list.component';
 import { CardsCountComponent } from './components/cards-count/cards-count.component';
+import { AddCardComponent } from './components/add-card/add-card.component';
+import { SingleCardComponent } from './components/single-card/single-card.component';
+
 // Service
 import { CardService } from './card.service';
-import { FormsModule } from '@angular/forms';
+import { CardRoutingModule } from './card-routing.module';
 
 @NgModule({
-  declarations: [CardListComponent, CardsCountComponent],
-  imports: [CommonModule, RouterModule, HttpModule, FormsModule],
-  exports: [CardListComponent],
+  declarations: [CardListComponent, CardsCountComponent, AddCardComponent, SingleCardComponent],
+  imports: [CommonModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule, CodemirrorModule, CardRoutingModule],
+  exports: [ReactiveFormsModule],
   providers: [CardService],
 })
 export class CardModule {}
