@@ -44,7 +44,7 @@ export class AddCardComponent implements OnInit {
     this.cardForm = new FormGroup({
       'title': new FormControl(null, [Validators.required, Validators.minLength(4)]),
       'description': new FormControl(null, [Validators.required, Validators.minLength(4)]),
-      'code': new FormControl(null, [Validators.required])
-    });
+      'code': new FormControl(null, {validators: Validators.required})
+    }, {updateOn: 'blur'});
   }
 }
