@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 
 @Component({
   templateUrl: 'card-list.component.html',
-  styleUrls: ['./card-list.component.css'],
+  styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent implements OnInit, OnDestroy {
   cards: Card[];

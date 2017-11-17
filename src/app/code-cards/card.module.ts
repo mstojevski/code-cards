@@ -1,7 +1,6 @@
 // Module
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
 import { CodemirrorModule } from 'ng2-codemirror';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +17,7 @@ import { CardRoutingModule } from './card-routing.module';
 
 @NgModule({
   declarations: [CardListComponent, CardsCountComponent, AddCardComponent, SingleCardComponent],
-  imports: [CommonModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule, CodemirrorModule, CardRoutingModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, CodemirrorModule, CardRoutingModule],
   exports: [ReactiveFormsModule],
   providers: [CardService],
 })
