@@ -17,6 +17,7 @@ export class AddCardComponent implements OnInit {
     lineNumbers: true,
     theme: 'material',
     tabSize: 2,
+    // keyMap: 'sublime',
     mode: 'javascript',
   };
 

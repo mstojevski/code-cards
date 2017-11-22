@@ -1,6 +1,6 @@
 <section class="card-single">
-  <div class="col-xs-4 col-xs-offset-4">
-    <div  class="card panel panel-default">
+  <div class="col-xs-4 col-xs-offset-4" *ngIf="(card$ | async) as card">
+    <div class="card panel panel-default">
       <div class="card-title panel-heading">
         {{card?.title}}
       </div>

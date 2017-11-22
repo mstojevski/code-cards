@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Card } from '../../models/card.interface';
 import { CardService } from '../../card.service';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
 
 
 import 'rxjs/add/operator/filter';
@@ -16,12 +15,11 @@ import 'rxjs/add/operator/catch';
   templateUrl: 'card-list.component.html',
   styleUrls: ['./card-list.component.scss'],
 })
-export class CardListComponent implements OnInit, OnDestroy {
-  cards: Card[];
+export class CardListComponent implements OnInit {
+  cards$: Observable<Card[]>;
   errorMessage: string;
   cardToEdit: Card;
   editStatus = false;
-  cardListSub: Subscription;
   constructor(private cardService: CardService) {}
 
   deleteCard(card: Card) {
@@ -40,12 +38,7 @@ export class CardListComponent implements OnInit, OnDestroy {
     this.clearState();
   }
   ngOnInit() {
-    this.cardListSub = this.cardService
-      .getCards()
-      .subscribe((data: Card[]) => (this.cards = data));
+    this.cards$ = this.cardService.getCards();
   }
 
-  ngOnDestroy() {
-    this.cardListSub.unsubscribe();
-  }
 }

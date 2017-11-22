@@ -2,9 +2,9 @@
   <div class="container">
     <h2 class="u-center site-title">Code cards are cool!</h2>
     <div class="col-xs-8 col-xs-offset-2">
-      <app-cards-count [cards]="cards"></app-cards-count>
-      <div *ngIf="cards?.length > 0; else noCards">
-        <div class="card panel panel-default" *ngFor="let card of cards">
+      <app-cards-count [cards]="cards$ | async"></app-cards-count>
+      <div *ngIf="cards$; else noCards">
+        <div class="card panel panel-default" *ngFor="let card of cards$ | async">
           <div class="card-title panel-heading">
             {{ card.title }}
             <span class="pull-right card-category">{{ card.category | uppercase}}</span>
@@ -14,9 +14,9 @@
             <pre class="card-code">{{ card.code }}</pre>
             <button [routerLink]="['/cards/card', card.id]" class="btn btn-primary">Show more</button>
             <button class="btn btn-danger" (click)="deleteCard(card)">Delete</button>
-            <button class="btn btn-success" (click)="editCard(card)">Edit</button>
+            <!-- <button class="btn btn-success" (click)="editCard(card)">Edit</button> -->
           </div>
-          <div *ngIf="editStatus && cardToEdit.id === card.id">
+          <!-- <div *ngIf="editStatus && cardToEdit.id === card.id">
             <form (ngSubmit)="updateCard(card)">
               <div class="form-group">
                 <label for="">Title</label>
@@ -29,7 +29,7 @@
               <button type="submit" class="btn btn-info">Update</button>
               <button (click)="clearState()" class="btn btn-danger">Cancel</button>
             </form>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
