@@ -1,0 +1,12 @@
+  <div class="card panel panel-default">
+    <div class="card-title panel-heading">
+      {{ card.title }}
+      <span class="pull-right card-category">{{ card.category | uppercase}}</span>
+    </div>
+    <div class="card-content">
+      <p>{{ card.description }}</p>
+      <pre class="card-code">{{ card.code }}</pre>
+      <button [routerLink]="['/cards/card', card.id]" class="btn btn-primary">Show more</button>
+      <button class="btn btn-danger" (click)="deleteCard(card)">Delete</button>
+    </div>
+  </div>
